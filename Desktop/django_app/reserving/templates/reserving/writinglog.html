@@ -1,0 +1,10 @@
+{% extends 'reserving/base.html' %}
+
+{% block title %}予約入力画面{% endblock %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">予約投稿</button>
+    </form>
+{% endblock %}

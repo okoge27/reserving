@@ -1,0 +1,15 @@
+{% extends 'reserving/base.html' %}
+
+{% block title %}予約一覧{% endblock %}
+{% block content %}
+    {% if reserve_list %}
+        {% for rl in reserve_list %}
+        <li>
+            <a href="{% url 'reserving:reserve_detail' rl.id %}">{{ rl.customer_name }}
+            {{ rl.contents }}
+            {{ rl.reserve_date }}
+            </a>
+        </li>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

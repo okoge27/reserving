@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}予約管理サイト{% endblock %}</title>
+    <li><a href="{% url 'home' %}">ホーム</a></li>
+    <li><a href="{% url 'reserving:registerreserve' %}">新規予約</a></li>
+    <li><a href="{% url 'reserving:alllist' %}">予約一覧</a></li>
+</head>
+<body>
+    <main>
+        {% if user.is_authenticated %}
+            <p>{{ user.get_username }}でログイン中</p>
+            <a href="{% url 'logout' %}" class="logout">ログアウト</a><br>
+                {% if form_name == "password_change" %}
+                {% else %}
+                    <a href="{% url 'password_change' %}" class="logout">パスワード変更</a><br>
+                {% endif %}
+            {% else %}
+                <p>ログインしてください</p>
+                <a href="{% url 'login' %}" class="login">ログイン</a><br>
+                <a href="{% url 'password_reset' %}">パスワードリセット</a><br>
+                <a href="{% url 'signup' %}">サインアップ</a><br>
+            {% endif %}
+            
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,1 @@
+"""C:\Users\hiroshimaminami39it\AppData\Local\Programs\Python\Python39\Lib\site-packages\django\contrib\admin\templates\registration"""

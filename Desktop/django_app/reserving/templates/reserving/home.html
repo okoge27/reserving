@@ -1,0 +1,11 @@
+{% extends 'reserving/base.html' %}
+
+{% block title %}ホーム{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    こんにちは  {{ user.username }}さん！
+{% else %}
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'reserving/base.html' %}
+
+{% block title %}予約詳細{% endblock %}
+{% block content %}
+    <h1>{{ reserve.customer_name }}</h1>
+    <h2>{{ reserve.reserve_date }}</h2>
+    <h3>{{ reserve.contents }} で予約済みです。</h3>
+
+    {% for log in reserve.log.all %}
+        <li>
+            {{ log.text }}
+            <button onclick="location.href='{% url 'reserving:updatelog' log.id %}'">編集</button>
+            <button onclick="location.href='{% url 'reserving:deletelog' log.id %}'">削除</button><br>
+        </li>
+    {% endfor %}
+    <a href="{% url 'reserving:writinglog' %}">備考欄編集</a>
+    <a href="{% url 'reserving:deletereserve' reserve.id %}">予約削除</a>
+{% endblock %}
